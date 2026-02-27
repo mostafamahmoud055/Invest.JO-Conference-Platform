@@ -12,8 +12,6 @@ class AuthService
     public function register(array $data)
     {
         return DB::transaction(function () use ($data) {
-
-            // 1️⃣ Create User
             $user = User::create([
                 'email' => $data['email'],
                 'password' => Hash::make('invest_jo_conference_platform'),
@@ -21,10 +19,12 @@ class AuthService
                 'status' => 'active',
             ]);
 
-            // 2️⃣ Create Profile
             $user->Profile()->create([
                 'first_name' => $data['first_name'],
+                'middle_name' => $data['middle_name'] ?? null,
                 'last_name' => $data['last_name'],
+                'family_name' => $data['family_name'] ?? null,
+                'national_id' => $data['national_id'] ?? null,
                 'phone' => $data['phone'] ?? null,
                 'job_title' => $data['job_title'],
                 'company' => $data['company'],
@@ -34,29 +34,25 @@ class AuthService
                 'linked_in_profile' => $data['linked_in_profile'] ?? null,
             ]);
 
-            // 3️⃣ Travel Details (optional)
             if (!empty($data['nationality'])) {
-
                 $passportPath = null;
 
                 if (isset($data['passport_image'])) {
-                    $passportPath = $data['passport_image']
-                        ->store('passports', 'private');
+                    $passportPath = $data['passport_image']->store('passports', 'private');
                 }
 
                 $user->travelDetail()->create([
                     'nationality' => $data['nationality'],
                     'country' => $data['country'],
-                    'arrival_date' => $data['arrival_date'] ,
-                    'arrival_time' => $data['arrival_time'] ,
-                    'departure_date' => $data['departure_date'] ,
-                    'departure_time' => $data['departure_time'] ,
+                    'arrival_date' => $data['arrival_date'],
+                    'arrival_time' => $data['arrival_time'],
+                    'departure_date' => $data['departure_date'],
+                    'departure_time' => $data['departure_time'],
                     'passport_image' => $passportPath,
                 ]);
             }
 
-
-            return  $user->load('Profile','travelDetail');
+            return $user->load('Profile', 'travelDetail');
         });
     }
 
@@ -90,7 +86,7 @@ class AuthService
         $newToken = Auth::refresh();
 
         return [
-            'user'  => Auth::user(),
+            'user' => Auth::user(),
             'token' => $newToken,
         ];
     }
