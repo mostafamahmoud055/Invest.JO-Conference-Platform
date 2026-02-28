@@ -27,7 +27,7 @@ class AuthService
                 'last_name' => $data['last_name'],
                 'middle_name' => $data['middle_name'] ?? null,
                 'family_name' => $data['family_name'] ?? null,
-                'phone' => $data['phone_country_code'] . $data['phone'] ?? null,
+                'phone' => $data['phone'] ?? null,
                 'job_title' => $data['job_title'],
                 'website' => $data['website'] ?? null,
                 'bio' => $data['bio'] ?? null,
