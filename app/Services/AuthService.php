@@ -20,15 +20,14 @@ class AuthService
                 'role' => 'visitor',
                 'status' => 'active',
             ]);
-
             // 2️⃣ Create Profile
             $user->Profile()->create([
                 'first_name' => $data['first_name'],
                 'last_name' => $data['last_name'],
+                'middle_name' => $data['middle_name'] ?? null,
+                'family_name' => $data['family_name'] ?? null,
                 'phone' => $data['phone'] ?? null,
                 'job_title' => $data['job_title'],
-                'company' => $data['company'],
-                'industry' => $data['industry'],
                 'website' => $data['website'] ?? null,
                 'bio' => $data['bio'] ?? null,
                 'linked_in_profile' => $data['linked_in_profile'] ?? null,
@@ -46,11 +45,10 @@ class AuthService
 
                 $user->travelDetail()->create([
                     'nationality' => $data['nationality'],
-                    'country' => $data['country'],
-                    'arrival_date' => $data['arrival_date'] ,
-                    'arrival_time' => $data['arrival_time'] ,
-                    'departure_date' => $data['departure_date'] ,
-                    'departure_time' => $data['departure_time'] ,
+                    'arrival_date' => $data['arrival_date'],
+                    'arrival_time' => $data['arrival_time'],
+                    'departure_date' => $data['departure_date'],
+                    'departure_time' => $data['departure_time'],
                     'passport_image' => $passportPath,
                 ]);
             }

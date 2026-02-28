@@ -15,9 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->unique()->constrained()->cascadeOnDelete();
 
-            $table->enum('nationality', ['Jordanian', 'European']);
-            $table->string('country');
-
+            $table->string('nationality');
             $table->date('arrival_date');
             $table->time('arrival_time');
             $table->date('departure_date');

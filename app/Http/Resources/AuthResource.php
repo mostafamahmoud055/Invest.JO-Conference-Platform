@@ -26,8 +26,6 @@ class AuthResource extends JsonResource
                 'last_name' => $this->profile->last_name,
                 'phone' => $this->profile->phone,
                 'job_title' => $this->profile->job_title,
-                'company' => $this->profile->company,
-                'industry' => $this->profile->industry,
                 'website' => $this->profile->website,
                 'bio' => $this->profile->bio,
                 'linked_in_profile' => $this->profile->linked_in_profile,
@@ -35,7 +33,6 @@ class AuthResource extends JsonResource
 
             'travel' => [
                 'nationality' => $this->travelDetail->nationality,
-                'country' => $this->travelDetail->country,
                 'arrival_date' => $this->travelDetail->arrival_date,
                 'arrival_time' => $this->travelDetail->arrival_time,
                 'departure_date' => $this->travelDetail->departure_date,

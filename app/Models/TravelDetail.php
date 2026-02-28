@@ -15,7 +15,6 @@ class TravelDetail extends Model
         'departure_date',
         'departure_time',
         'nationality',
-        'country',
         'passport_image',
     ];
 }

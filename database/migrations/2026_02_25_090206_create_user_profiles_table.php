@@ -22,8 +22,6 @@ return new class extends Migration
             $table->string('phone')->nullable()->unique();
             $table->string('national_id')->nullable()->unique();
             $table->string('job_title');
-            $table->string('company');
-            $table->string('industry');
             $table->string('website')->nullable();
 
             $table->text('bio')->nullable();
