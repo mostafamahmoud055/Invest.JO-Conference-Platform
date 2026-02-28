@@ -54,10 +54,10 @@ class AuthService
                 ]);
             }
 
-            Mail::raw('Welcome to Invest.JO!', function ($message) {
-                $message->to('mostafamahmoud055@gmail.com') // ❌ Hardcoded email, replace with dynamic user email
-                    ->subject('Welcome');
-            });
+            // Mail::raw('Welcome to Invest.JO!', function ($message) {
+            //     $message->to('mostafamahmoud055@gmail.com') // ❌ Hardcoded email, replace with dynamic user email
+            //         ->subject('Welcome');
+            // });
 
             return  $user->load('Profile', 'travelDetail');
         });
