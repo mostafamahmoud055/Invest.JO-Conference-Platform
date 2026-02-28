@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthService
 {
@@ -26,7 +27,7 @@ class AuthService
                 'last_name' => $data['last_name'],
                 'middle_name' => $data['middle_name'] ?? null,
                 'family_name' => $data['family_name'] ?? null,
-                'phone' => $data['phone'] ?? null,
+                'phone' => $data['phone_country_code'] . $data['phone'] ?? null,
                 'job_title' => $data['job_title'],
                 'website' => $data['website'] ?? null,
                 'bio' => $data['bio'] ?? null,
@@ -53,8 +54,12 @@ class AuthService
                 ]);
             }
 
+            // Mail::raw('Welcome to Invest.JO!', function ($message) {
+            //     $message->to('mostafamahmoud055@gmail.com') // ❌ Hardcoded email, replace with dynamic user email
+            //         ->subject('Welcome');
+            // });
 
-            return  $user->load('Profile','travelDetail');
+            return  $user->load('Profile', 'travelDetail');
         });
     }
 
