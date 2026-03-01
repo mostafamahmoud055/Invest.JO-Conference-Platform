@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Mail\UserLoggedInMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +22,7 @@ class AuthService
                 'role' => 'visitor',
                 'status' => 'active',
             ]);
-            // 2️⃣ Create Profile
+            // // 2️⃣ Create Profile
             $user->Profile()->create([
                 'first_name' => $data['first_name'],
                 'last_name' => $data['last_name'],
@@ -34,7 +35,7 @@ class AuthService
                 'linked_in_profile' => $data['linked_in_profile'] ?? null,
             ]);
 
-            // 3️⃣ Travel Details (optional)
+            // // 3️⃣ Travel Details (optional)
             if (!empty($data['nationality'])) {
 
                 $passportPath = null;
@@ -54,10 +55,7 @@ class AuthService
                 ]);
             }
 
-            // Mail::raw('Welcome to Invest.JO!', function ($message) {
-            //     $message->to('mostafamahmoud055@gmail.com') // ❌ Hardcoded email, replace with dynamic user email
-            //         ->subject('Welcome');
-            // });
+            Mail::to($user->email)->queue(new UserLoggedInMail($user));
 
             return  $user->load('Profile', 'travelDetail');
         });
