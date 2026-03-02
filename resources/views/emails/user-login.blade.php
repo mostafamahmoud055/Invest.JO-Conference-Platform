@@ -1,20 +1,44 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="preload" as="image" href="{{ url('images/aafa5c6c25d478a367dd450f64b222a7.png') }}"><link rel="preload" as="image" href="{{ url('images/8feca20d141ddd3e3eb3c659da2e2a2c.png') }}"><link rel="preload" as="image" href="{{ url('images/93636a3607700868a90eab7fe5487b12.png') }}"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="format-detection" content="telephone=no, date=no, address=no, email=no"><meta name="x-apple-disable-message-reformatting"><meta name="keywords" content="DAHCU2Nt4Cg, BAGy98nK4Pg"><!--[if mso]><div>
-                <noscript>
-                  <xml>
-                    <o:OfficeDocumentSettings>
-                      <o:AllowPNG/>
-                      <o:PixelsPerInch>96</o:PixelsPerInch>
-                    </o:OfficeDocumentSettings>
-                  </xml>
-                </noscript></div><![endif]--></head><body style="width:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%;background-color:#f0f1f5;margin:0;padding:0"><table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#f0f1f5" style="background-color:#f0f1f5"><tbody><tr><td style="background-color:#f0f1f5"><!--[if mso]><center>
-                    <table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
-                      <tbody>
-                        <tr>
-                          <td><![endif]--><table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="max-width:600px;min-height:600px;margin:0 auto;background-color:#ffffff"><tbody><tr><td style="vertical-align:top"></td></tr><tr><td style="vertical-align:top;padding:10px
-           0px
-           10px
-           0px"><table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation"><tbody><tr><td style="padding:10px 0 10px 0;vertical-align:top"><table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="color:#000;font-style:normal;font-weight:normal;font-size:16px;line-height:1.4;letter-spacing:0;text-align:left;direction:ltr;border-collapse:collapse;font-family:Arial, Helvetica, sans-serif;white-space:normal;word-wrap:break-word;word-break:break-word"><tbody><tr><td><table cellpadding="0" cellspacing="0" border="0" style="width:100%"><tbody><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px"><tbody><tr><td style="width:100%;padding:0"><img src="{{ url('images/aafa5c6c25d478a367dd450f64b222a7.png')}}" width="600" height="167" style="display:block;width:100%;height:auto;max-width:100%"></td></tr></tbody></table></td></tr></tbody></table></td></tr><tr><td style="font-size:0;height:16px" height="16">&nbsp;</td></tr><tr><td dir="ltr" style="font-size:16px;text-align:left;padding:0px 20px"><span style="font-size:13.33px;white-space:pre-wrap">Dear {{ $user->Profile->first_name }},</span><span style="font-size:15px;white-space:pre-wrap"><br></span></td></tr><tr><td style="font-size:0;height:16px" height="16">&nbsp;</td></tr><tr><td dir="ltr" style="font-size:16px;text-align:left;padding:0px 20px"><span style="font-size:13.33px;white-space:pre-wrap">Thank you for your interest in the Jordan–EU Investment Conference 2026. We sincerely appreciate your interest and look forward to welcoming you to this event.</span><span style="font-size:15px;white-space:pre-wrap"><br></span></td></tr><tr><td style="font-size:0;height:16px" height="16">&nbsp;</td></tr><tr><td dir="ltr" style="font-size:16px;text-align:left;padding:0px 20px"><span style="font-size:13.33px;white-space:pre-wrap">Please note that your request is currently under process. We kindly ask for your patience during this period and we will notify you shortly.</span><span style="font-size:15px;white-space:pre-wrap"><br></span></td></tr><tr><td style="font-size:0;height:16px" height="16">&nbsp;</td></tr><tr><td dir="ltr" style="font-size:16px;text-align:left;padding:0px 20px"><span style="font-size:13.33px;white-space:pre-wrap">Should you have any questions in the meantime or require additional information, please do not hesitate to contact us. We will be happy to assist you.</span><span style="font-size:15px;white-space:pre-wrap"><br></span></td></tr><tr><td style="font-size:0;height:16px" height="16">&nbsp;</td></tr><tr><td dir="ltr" style="font-size:16px;text-align:left;padding:0px 20px"><span style="font-size:13.33px;white-space:pre-wrap">Thank you once again for reaching out.</span><span style="font-size:15px;white-space:pre-wrap"><br></span></td></tr><tr><td style="font-size:0;height:16px" height="16">&nbsp;</td></tr><tr><td dir="ltr" style="font-size:16px;text-align:left;padding:0px 20px"><span style="font-size:13.33px;white-space:pre-wrap">Kind regards,</span><span style="font-size:15px;white-space:pre-wrap"><br></span></td></tr><tr><td style="font-size:0;height:16px" height="16">&nbsp;</td></tr><tr><td dir="ltr" style="font-size:16px;white-space:pre-wrap;text-align:left;padding:0px 20px"><br></td></tr><tr><td style="font-size:0;height:16px" height="16">&nbsp;</td></tr><tr><td style="padding:0px 20px"><table cellpadding="0" cellspacing="0" border="0" style="width:100%"><tbody><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:560px"><tbody><tr><td style="width:100%;padding:0"><img src="{{ url('images/8feca20d141ddd3e3eb3c659da2e2a2c.png')}}" width="560" height="159" style="display:block;width:100%;height:auto;max-width:100%"></td></tr></tbody></table></td></tr></tbody></table></td></tr><tr><td style="font-size:0;height:16px" height="16">&nbsp;</td></tr><tr><td style="padding:0px 20px"><table cellpadding="0" cellspacing="0" border="0" style="width:100%"><tbody><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:560px"><tbody><tr><td style="width:100%;padding:0"><img src="{{ url('images/93636a3607700868a90eab7fe5487b12.png')}}" width="560" height="49" style="display:block;width:100%;height:auto;max-width:100%"></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></td></tr><tr><td height="100%" style="height:100%;font-size:0;line-height:0" aria-hidden="true">&nbsp;</td></tr></tbody></table><!--[if mso]></td>
-                </tr>
-              </tbody>
-            </table>
-          </center><![endif]--></td></tr></tbody></table></body></html>
+<tr><td dir="ltr" style="font-size:16px;text-align:left;padding:0px 20px"><span style="font-size:13.33px;white-space:pre-wrap">Dear {{ $user->Profile->first_name }},</span><span style="font-size:15px;white-space:pre-wrap"><br></span></td></tr>
+<tr><td style="font-size:0;height:16px" height="16">&nbsp;</td></tr>
+
+<tr><td dir="ltr" style="font-size:16px;text-align:left;padding:0px 20px"><span style="font-size:13.33px;white-space:pre-wrap">We welcome you to the Jordan–EU 2026 Conference and we value your participation.</span><span style="font-size:15px;white-space:pre-wrap"><br></span></td></tr>
+<tr><td style="font-size:0;height:16px" height="16">&nbsp;</td></tr>
+
+<tr><td dir="ltr" style="font-size:16px;text-align:left;padding:0px 20px"><span style="font-size:13.33px;white-space:pre-wrap">Kindly access the conference application or website to manage your participation, schedule meetings, and complete your travel and accommodation details.</span><span style="font-size:15px;white-space:pre-wrap"><br></span></td></tr>
+<tr><td style="font-size:0;height:16px" height="16">&nbsp;</td></tr>
+
+<tr><td dir="ltr" style="font-size:16px;text-align:left;padding:0px 20px">
+<span style="font-size:13.33px;white-space:pre-wrap">Access details:</span><br><br>
+<span style="font-size:13.33px;white-space:pre-wrap">• Conference website / registration portal: {{ $user->Profile?->website }}</span><br>
+<span style="font-size:13.33px;white-space:pre-wrap">• *for now until the app link is available, amend line in yellow to: "We will share a link to the event's application soon. Please ensure to download it to have access to the event details and latest new updates."</span><br>
+<span style="font-size:13.33px;white-space:pre-wrap">• Hotel booking link: [Insert Hotel Link]</span>
+<span style="font-size:15px;white-space:pre-wrap"><br></span>
+</td></tr>
+
+<tr><td style="font-size:0;height:16px" height="16">&nbsp;</td></tr>
+
+<tr><td dir="ltr" style="font-size:16px;text-align:left;padding:0px 20px">
+<span style="font-size:13.33px;white-space:pre-wrap">There will be a gala dinner held on the 20th of April, 2026. If you would like to confirm your attendance, please let us know.</span>
+<span style="font-size:15px;white-space:pre-wrap"><br></span>
+</td></tr>
+
+<tr><td style="font-size:0;height:16px" height="16">&nbsp;</td></tr>
+
+<tr><td dir="ltr" style="font-size:16px;text-align:left;padding:0px 20px">
+<span style="font-size:13.33px;white-space:pre-wrap">Providing your flight and accommodation information will enable us to coordinate airport transfers and ensure smooth arrival and departure arrangements.</span>
+<span style="font-size:15px;white-space:pre-wrap"><br></span>
+</td></tr>
+
+<tr><td style="font-size:0;height:16px" height="16">&nbsp;</td></tr>
+
+<tr><td dir="ltr" style="font-size:16px;text-align:left;padding:0px 20px">
+<span style="font-size:13.33px;white-space:pre-wrap">Should you require assistance with visa procedures prior to travel, please inform us and our team will provide the necessary support.</span>
+<span style="font-size:15px;white-space:pre-wrap"><br></span>
+</td></tr>
+
+<tr><td style="font-size:0;height:16px" height="16">&nbsp;</td></tr>
+
+<tr><td dir="ltr" style="font-size:16px;text-align:left;padding:0px 20px">
+<span style="font-size:13.33px;white-space:pre-wrap">Kind regards,</span>
+<span style="font-size:15px;white-space:pre-wrap"><br></span>
+</td></tr>

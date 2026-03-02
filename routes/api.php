@@ -19,8 +19,10 @@ Route::middleware('Jwt.Auth')->group(function () {
 
 Route::apiResource('agendas', AgendaController::class);
 
-Route::post('/meetings/book', [MeetingController::class, 'book'])
-    ->middleware('Jwt.Auth');
+Route::prefix('meetings')->middleware('Jwt.Auth')->group(function () {
+    Route::post('/', [MeetingController::class, 'book']);
+    Route::get('/', [MeetingController::class, 'index']);
+});
 
 // Route::post('/meetings/bookings/{id}/cancel', [MeetingController::class, 'cancel'])
 //     ->middleware('Jwt.Auth');

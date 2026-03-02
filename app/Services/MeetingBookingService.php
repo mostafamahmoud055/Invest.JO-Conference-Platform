@@ -1,14 +1,21 @@
 <?php
 
 namespace App\Services;
-
-use App\Models\MeetingHall;
 use App\Models\MeetingBooking;
 use Illuminate\Support\Facades\DB;
 
 class MeetingBookingService
 {
 
+
+    public function index(array $filters = [])
+    {
+        $query = MeetingBooking::query()
+            ->with(['hall', 'user']);
+
+        return $query->latest()
+            ->simplePaginate($filters['per_page'] ?? 10);
+    }
     public function bookHall(array $data): MeetingBooking
     {
         return DB::transaction(function () use ($data) {

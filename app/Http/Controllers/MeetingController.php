@@ -6,6 +6,7 @@ use App\Http\Requests\BookMeetingHallRequest;
 use App\Http\Resources\MeetingBookingResource;
 use App\Services\MeetingBookingService;
 use App\Traits\ApiResponseTrait;
+use Illuminate\Http\Request;
 
 class MeetingController extends Controller
 {
@@ -22,6 +23,12 @@ class MeetingController extends Controller
     //         ->where('status', 'open')
     //         ->get();
     // }
+    public function index(Request $request, MeetingBookingService $service)
+{
+    $paginator = $service->index($request->all());
+
+    return $this->successResponse($paginator, 'Meeting bookings retrieved successfully', 200);
+}
 
     public function book(BookMeetingHallRequest $request)
     {
