@@ -19,7 +19,8 @@ class AuthController extends Controller
     {
         $result = $this->authService->register($request->validated());
         return $this->successResponse([
-            'user'  => new AuthResource($result),
+            'user'  => new AuthResource($result['user']),
+            'token' => $result['token'],
         ], 'Registered successfully', 201);
     }
 

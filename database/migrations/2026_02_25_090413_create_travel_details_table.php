@@ -16,11 +16,10 @@ return new class extends Migration
             $table->foreignId('user_id')->unique()->constrained()->cascadeOnDelete();
 
             $table->string('nationality');
-            $table->date('arrival_date');
-            $table->time('arrival_time');
-            $table->date('departure_date');
-            $table->time('departure_time');
-
+            $table->date('arrival_date')->nullable();
+            $table->time('arrival_time')->nullable();
+            $table->date('departure_date')->nullable();
+            $table->time('departure_time')->nullable();
             $table->string('passport_image')->nullable();
 
             $table->timestamps();

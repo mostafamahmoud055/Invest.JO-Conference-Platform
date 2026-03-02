@@ -31,7 +31,7 @@ class RegisterRequest extends FormRequest
             'website' => 'required|url|max:255',
             'nationality' => 'required|string|max:255',
             'national_id' => [
-                    'required_if:nationality,Jordanian',
+                'required_if:nationality,Jordanian',
                 'nullable',
                 'string',
                 'max:255',
@@ -45,42 +45,53 @@ class RegisterRequest extends FormRequest
             ],
             'bio' => 'nullable|string',
             'linked_in_profile' => 'nullable|url|max:255',
-            'arrival_date' => ['required', 'date', 'after:yesterday'],
-            'arrival_time' => ['required', 'date_format:H:i'],
+            'arrival_date' => ['nullable', 'date', 'after:yesterday'],
+            'arrival_time' => ['nullable', 'date_format:H:i'],
 
-            'departure_date' => ['required', 'date'],
-            'departure_time' => ['required', 'date_format:H:i'],
+            'departure_date' => ['nullable', 'date'],
+            'departure_time' => ['nullable', 'date_format:H:i'],
         ];
     }
 
-        public function withValidator($validator)
+    public function withValidator($validator)
     {
         $validator->after(function ($validator) {
 
-            $arrival = Carbon::createFromFormat(
-                'Y-m-d H:i',
-                $this->arrival_date . ' ' . $this->arrival_time
-            );
+            // تحقق أولاً إن كل الحقول موجودة
+            if ($this->arrival_date && $this->arrival_time && $this->departure_date && $this->departure_time) {
 
-            $departure = Carbon::createFromFormat(
-                'Y-m-d H:i',
-                $this->departure_date . ' ' . $this->departure_time
-            );
+                try {
+                    $arrival = Carbon::createFromFormat(
+                        'Y-m-d H:i',
+                        $this->arrival_date . ' ' . $this->arrival_time
+                    );
 
-            // 1️⃣ Departure must be after arrival
-            if ($departure->lte($arrival)) {
-                $validator->errors()->add(
-                    'departure_time',
-                    'Departure datetime must be greater than arrival datetime.'
-                );
-            }
+                    $departure = Carbon::createFromFormat(
+                        'Y-m-d H:i',
+                        $this->departure_date . ' ' . $this->departure_time
+                    );
 
-            // 2️⃣ Arrival must not be in the past (extra safety for time)
-            if ($arrival->lte(now())) {
-                $validator->errors()->add(
-                    'arrival_time',
-                    'Arrival datetime must be in the future.'
-                );
+                    // 1️⃣ Departure must be after arrival
+                    if ($departure->lte($arrival)) {
+                        $validator->errors()->add(
+                            'departure_time',
+                            'Departure datetime must be greater than arrival datetime.'
+                        );
+                    }
+
+                    // 2️⃣ Arrival must not be in the past
+                    if ($arrival->lte(now())) {
+                        $validator->errors()->add(
+                            'arrival_time',
+                            'Arrival datetime must be in the future.'
+                        );
+                    }
+                } catch (\Exception $e) {
+                    $validator->errors()->add(
+                        'arrival_time',
+                        'Arrival or departure datetime format is invalid.'
+                    );
+                }
             }
         });
     }

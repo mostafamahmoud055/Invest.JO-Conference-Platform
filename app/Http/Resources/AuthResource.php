@@ -33,10 +33,10 @@ class AuthResource extends JsonResource
 
             'travel' => [
                 'nationality' => $this->travelDetail->nationality,
-                'arrival_date' => $this->travelDetail->arrival_date,
-                'arrival_time' => $this->travelDetail->arrival_time,
-                'departure_date' => $this->travelDetail->departure_date,
-                'departure_time' => $this->travelDetail->departure_time,
+                'arrival_date' => $this->travelDetail?->arrival_date,
+                'arrival_time' => $this->travelDetail?->arrival_time,
+                'departure_date' => $this->travelDetail?->departure_date,
+                'departure_time' => $this->travelDetail?->departure_time,
 
                 // ❌ ما نرجعش path مباشر
                 'has_passport' => !empty($this->travelDetail->passport_image),

@@ -11,56 +11,60 @@ use Illuminate\Support\Facades\Mail;
 
 class AuthService
 {
-public function register(array $data)
-{
-    $user = DB::transaction(function () use ($data) {
+    public function register(array $data)
+    {
+        $user = DB::transaction(function () use ($data) {
 
-        $user = User::create([
-            'email' => $data['email'],
-            'password' => Hash::make('invest_jo_conference_platform'),
-            'role' => 'visitor',
-            'status' => 'active',
-        ]);
+            $user = User::create([
+                'email' => $data['email'],
+                'password' => Hash::make('invest_jo_conference_platform'),
+                'role' => 'visitor',
+                'status' => 'active',
+            ]);
 
-        $user->Profile()->create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'middle_name' => $data['middle_name'] ?? null,
-            'family_name' => $data['family_name'] ?? null,
-            'phone' => $data['phone'] ?? null,
-            'job_title' => $data['job_title'],
-            'website' => $data['website'] ?? null,
-            'bio' => $data['bio'] ?? null,
-            'linked_in_profile' => $data['linked_in_profile'] ?? null,
-        ]);
+            $user->Profile()->create([
+                'first_name' => $data['first_name'],
+                'last_name' => $data['last_name'],
+                'middle_name' => $data['middle_name'] ?? null,
+                'family_name' => $data['family_name'] ?? null,
+                'phone' => $data['phone'] ?? null,
+                'job_title' => $data['job_title'],
+                'website' => $data['website'] ?? null,
+                'bio' => $data['bio'] ?? null,
+                'linked_in_profile' => $data['linked_in_profile'] ?? null,
+            ]);
 
-        if (!empty($data['nationality'])) {
+            if (!empty($data['nationality'])) {
 
-            $passportPath = null;
+                $passportPath = null;
 
-            if (isset($data['passport_image'])) {
-                $passportPath = $data['passport_image']
-                    ->store('passports', 'private');
+                if (isset($data['passport_image'])) {
+                    $passportPath = $data['passport_image']
+                        ->store('passports', 'private');
+                }
+
+                $user->travelDetail()->create([
+                    'nationality' => $data['nationality'],
+                    'arrival_date' => $data['arrival_date'] ?? null,
+                    'arrival_time' => $data['arrival_time'] ?? null,
+                    'departure_date' => $data['departure_date'] ?? null,
+                    'departure_time' => $data['departure_time'] ?? null,
+                    'passport_image' => $passportPath,
+                ]);
             }
 
-            $user->travelDetail()->create([
-                'nationality' => $data['nationality'],
-                'arrival_date' => $data['arrival_date'],
-                'arrival_time' => $data['arrival_time'],
-                'departure_date' => $data['departure_date'],
-                'departure_time' => $data['departure_time'],
-                'passport_image' => $passportPath,
-            ]);
-        }
+            return $user;
+        });
 
-        return $user;
-    });
+        Mail::to($user->email)->send(new UserLoggedInMail($user));
 
-    // 🔥 الإيميل هنا بعد الترانزاكشن
-    Mail::to($user->email)->send(new UserLoggedInMail($user));
+        $token = Auth::attempt([
+            'email' => $data['email'],
+            'password' => 'invest_jo_conference_platform',
+        ]);
 
-    return $user->load('Profile', 'travelDetail');
-}
+        return ['user' => $user->load('Profile', 'travelDetail'), 'token' => $token];
+    }
 
     // public function login(array $credentials): array
     // {

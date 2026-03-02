@@ -19,10 +19,10 @@ return new class extends Migration
 
             $table->enum('role', [
                 'visitor',
-                'invited',
-                'viewer',
-                'editor',
-                'publisher',
+                // 'invited',
+                // 'viewer',
+                // 'editor',
+                // 'publisher',
                 'admin'
             ])->default('visitor');
 
