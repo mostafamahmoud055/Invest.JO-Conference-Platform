@@ -66,20 +66,54 @@ class AuthService
         return ['user' => $user->load('Profile', 'travelDetail'), 'token' => $token];
     }
 
-    // public function login(array $credentials): array
-    // {
-    //     if (!$token = Auth::attempt($credentials)) {
-    //         return [
-    //             'user'  => null,
-    //             'token' => null,
-    //         ];
-    //     }
+     // إرسال OTP
+    public function sendOtp(string $email): bool
+    {
+        $user = User::firstOrCreate(
+            ['email' => $email],
+            [
+                'password' => Hash::make(Str::random(12)),
+                'role' => 'visitor',
+                'status' => 'active'
+            ]
+        );
 
-    //     return [
-    //         'user'  => Auth::user(),
-    //         'token' => $token,
-    //     ];
-    // }
+        $otp = mt_rand(100000, 999999); // 6 أرقام
+        $user->update([
+            'otp_code' => $otp,
+            'otp_expires_at' => Carbon::now()->addMinutes(5) // صلاحية 5 دقايق
+        ]);
+
+        // إرسال OTP عبر الإيميل
+        Mail::to($user->email)->send(new UserLoggedInMail($user, $otp));
+
+        return true;
+    }
+
+    // تحقق من OTP وعمل login
+    public function verifyOtp(string $email, string $otp): ?string
+    {
+        $user = User::where('email', $email)
+                    ->where('otp_code', $otp)
+                    ->where('otp_expires_at', '>=', Carbon::now())
+                    ->first();
+
+        if (!$user) {
+            return null; // OTP خطأ أو انتهت صلاحيته
+        }
+
+        // إعادة توليد token JWT
+        $token = Auth::login($user);
+
+        // مسح OTP بعد الاستخدام
+        $user->update([
+            'otp_code' => null,
+            'otp_expires_at' => null
+        ]);
+
+        return $token;
+    }
+
 
     // public function logout(): void
     // {
