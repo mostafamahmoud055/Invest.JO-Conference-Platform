@@ -30,6 +30,15 @@ class MeetingController extends Controller
     return $this->successResponse($paginator, 'Meeting bookings retrieved successfully', 200);
 }
 
+public function show(string $id, MeetingBookingService $service)
+{
+    $booking = $service->show($id);
+    if (!$booking) {
+        return $this->errorResponse('Meeting booking not found', 404);
+    }
+    return $this->successResponse(new MeetingBookingResource($booking), 'Meeting booking retrieved successfully', 200);
+}
+
     public function book(BookMeetingHallRequest $request)
     {
         $data = $request->validated();

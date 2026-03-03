@@ -16,6 +16,11 @@ class MeetingBookingService
         return $query->latest()
             ->simplePaginate($filters['per_page'] ?? 10);
     }
+
+    public function show(string $id): ?MeetingBooking
+    {
+        return MeetingBooking::with(['hall', 'user'])->find($id);
+    }
     public function bookHall(array $data): MeetingBooking
     {
         return DB::transaction(function () use ($data) {

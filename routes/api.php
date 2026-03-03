@@ -22,6 +22,8 @@ Route::apiResource('agendas', AgendaController::class);
 Route::prefix('meetings')->middleware('Jwt.Auth')->group(function () {
     Route::post('/', [MeetingController::class, 'book']);
     Route::get('/', [MeetingController::class, 'index']);
+
+    Route::get('/{id}', [MeetingController::class, 'show']);
 });
 
 // Route::post('/meetings/bookings/{id}/cancel', [MeetingController::class, 'cancel'])
