@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Requests\Auth\RegisterRequest;
+use App\Http\Requests\SendOTPRequest;
+use App\Http\Requests\VerifyOTPRequest;
+use App\Http\Resources\AuthResource;
 use App\Services\AuthService;
 use App\Traits\ApiResponseTrait;
-use App\Http\Requests\Auth\LoginRequest;
-use App\Http\Resources\AuthResource;
-use App\Http\Requests\Auth\RegisterRequest;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -24,6 +26,31 @@ class AuthController extends Controller
         ], 'Registered successfully', 201);
     }
 
+
+    public function sendOTP(SendOTPRequest $request)
+    {
+        $validatedData = $request->validated();
+
+        $this->authService->sendOTP($validatedData['email']);
+
+        return $this->successResponse(message: 'OTP sent successfully');
+    }
+
+    public function verifyOTP(VerifyOTPRequest $request)
+    {
+        $validatedData = $request->validated();
+
+        $result = $this->authService->verifyOtp($validatedData);
+
+        if (!$result) {
+            return $this->errorResponse('Invalid OTP', 401);
+        }
+
+        return $this->successResponse([
+            'user'  => new AuthResource($result['user']),
+            'token' => $result['token'],
+        ], 'OTP verified successfully');
+    }
     // public function login(LoginRequest $request)
     // {
     //     $result = $this->authService->login($request->validated());

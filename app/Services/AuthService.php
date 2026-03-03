@@ -68,17 +68,10 @@ class AuthService
         return ['user' => $user->load('Profile', 'travelDetail'), 'token' => $token];
     }
 
-     // إرسال OTP
+    // إرسال OTP
     public function sendOtp(string $email): bool
     {
-        $user = User::firstOrCreate(
-            ['email' => $email],
-            [
-                'password' => Hash::make(Str::random(12)),
-                'role' => 'visitor',
-                'status' => 'active'
-            ]
-        );
+        $user = User::where('email', $email)->first();
 
         $otp = mt_rand(100000, 999999); // 6 أرقام
         $user->update([
@@ -87,18 +80,21 @@ class AuthService
         ]);
 
         // إرسال OTP عبر الإيميل
-        Mail::to($user->email)->send(new UserLoggedInMail($user, $otp));
+        Mail::to($user->email)->send(new \App\Mail\VerifyOTP($user, $otp));
 
         return true;
     }
 
     // تحقق من OTP وعمل login
-    public function verifyOtp(string $email, string $otp): ?string
+    public function verifyOtp( array $data): ?array
     {
+        $email = $data['email'];
+        $otp = $data['otp'];
+
         $user = User::where('email', $email)
-                    ->where('otp_code', $otp)
-                    ->where('otp_expires_at', '>=', Carbon::now())
-                    ->first();
+            ->where('otp_code', $otp)
+            ->where('otp_expires_at', '>=', Carbon::now())
+            ->first();
 
         if (!$user) {
             return null; // OTP خطأ أو انتهت صلاحيته
@@ -113,7 +109,7 @@ class AuthService
             'otp_expires_at' => null
         ]);
 
-        return $token;
+        return ['token' => $token, 'user' => $user];
     }
 
 

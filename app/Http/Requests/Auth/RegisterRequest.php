@@ -2,9 +2,6 @@
 
 namespace App\Http\Requests\Auth;
 
-use App\Rules\FullNameRequiredForJordanian;
-use App\Rules\NationalIdRequiredForJordanian;
-use App\Rules\PassportRequiredForEuropean;
 use App\Traits\ApiValidationTrait;
 use Illuminate\Foundation\Http\FormRequest;
 use Carbon\Carbon;
