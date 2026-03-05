@@ -58,7 +58,7 @@ class AuthService
             return $user;
         });
 
-        Mail::to($user->email)->send(new UserLoggedInMail($user));
+        // Mail::to($user->email)->send(new UserLoggedInMail($user));
 
         $token = Auth::attempt([
             'email' => $data['email'],
